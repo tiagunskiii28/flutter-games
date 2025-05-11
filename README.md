@@ -80,30 +80,6 @@ flutter pub get
 
 ---
 
-## Icono de la aplicación
-
-Para definir el icono de la aplicación:
-
-1. Coloca tu imagen PNG (idealmente cuadrada, 512×512) en `assets/icon/app_icon.png`.
-2. Añade la configuración en `pubspec.yaml`:
-
-   ```yaml
-   dev_dependencies:
-     flutter_launcher_icons: ^0.14.3
-
-   flutter_icons:
-     android: true
-     ios: false
-     image_path: "assets/icon/app_icon.png"
-   ```
-3. Ejecuta:
-
-   ```bash
-   flutter pub get
-   dart run flutter_launcher_icons
-   ```
-
----
 
 ## Estructura del código clave
 
