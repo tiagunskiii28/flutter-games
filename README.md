@@ -1,25 +1,24 @@
-FreeToGame Browser
+# FreeToGame Browser
 
-Aplicación Flutter que consume la API pública de FreeToGame y muestra una lista de juegos con búsqueda en tiempo real.
+Aplicación Flutter que consume la API pública de [FreeToGame](https://www.freetogame.com/api/) y muestra una lista de juegos con búsqueda en tiempo real.
 
-Características
+---
 
-Obtiene la lista completa de juegos mediante petición REST GET https://www.freetogame.com/api/games
+## Características
 
-Modelos Dart robustos que manejan valores nulos y formatos inesperados
+* Obtiene la lista completa de juegos mediante petición REST `GET https://www.freetogame.com/api/games`
+* Modelos Dart robustos que manejan valores nulos y formatos inesperados
+* Gestión de estado con `Provider` y `ChangeNotifier`
+* Búsqueda en tiempo real mediante `TextField` y filtro dinámico
+* Indicador de carga (`CircularProgressIndicator`) mientras se obtienen datos
+* Manejo de errores y mensajes de fallo de conexión
+* Diálogo de detalles al seleccionar un juego
 
-Gestión de estado con Provider y ChangeNotifier
+---
 
-Búsqueda en tiempo real mediante TextField y filtro dinámico
+## Estructura de carpetas
 
-Indicador de carga (CircularProgressIndicator) mientras se obtienen datos
-
-Manejo de errores y mensajes de fallo de conexión
-
-Diálogo de detalles al seleccionar un juego
-
-Estructura de carpetas
-
+```
 lib/
 ├─ api_service/            # Lógica de conexión a la API
 │   └─ api_service.dart
@@ -30,11 +29,15 @@ lib/
 ├─ views/                  # Vistas (pantallas) de la app
 │   └─ game_list_view.dart
 └─ main.dart               # Punto de entrada de la aplicación
+```
 
-Dependencias
+---
 
-En pubspec.yaml:
+## Dependencias
 
+En `pubspec.yaml`:
+
+```yaml
 dependencies:
   flutter:
     sdk: flutter
@@ -44,55 +47,69 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+```
 
 Ejecuta:
 
+```bash
 flutter pub get
+```
 
-Configuración rápida
+---
 
-Clona el repositorio:
+## Configuración rápida
 
-git clone <URL_DEL_PROYECTO>
-cd <PROYECTO>
+1. Clona el repositorio:
 
-Obtén dependencias:
+   ```bash
+   git clone <URL_DEL_PROYECTO>
+   cd <PROYECTO>
+   ```
 
-flutter pub get
+2. Obtén dependencias:
 
-Ejecuta en un dispositivo o emulador conectado:
+   ```bash
+   flutter pub get
+   ```
 
-flutter run
+3. Ejecuta en un dispositivo o emulador conectado:
 
-Icono de la aplicación
+   ```bash
+   flutter run
+   ```
+
+---
+
+## Icono de la aplicación
 
 Para definir el icono de la aplicación:
 
-Coloca tu imagen PNG (idealmente cuadrada, 512×512) en assets/icon/app_icon.png.
+1. Coloca tu imagen PNG (idealmente cuadrada, 512×512) en `assets/icon/app_icon.png`.
+2. Añade la configuración en `pubspec.yaml`:
 
-Añade la configuración en pubspec.yaml:
+   ```yaml
+   dev_dependencies:
+     flutter_launcher_icons: ^0.14.3
 
-dev_dependencies:
-  flutter_launcher_icons: ^0.14.3
+   flutter_icons:
+     android: true
+     ios: false
+     image_path: "assets/icon/app_icon.png"
+   ```
+3. Ejecuta:
 
-flutter_icons:
-  android: true
-  ios: false
-  image_path: "assets/icon/app_icon.png"
+   ```bash
+   flutter pub get
+   dart run flutter_launcher_icons
+   ```
 
-Ejecuta:
+---
 
-flutter pub get
-dart run flutter_launcher_icons
+## Estructura del código clave
 
-Estructura del código clave
+* \`\`: método `fetchGames()` que maneja JSON directo o con wrapper `{ games: [...] }`.
+* \`\`: clase `GameData` con `fromJson` tolerante a nulos.
+* \`\`: lógica de carga, estados (`isLoading`, `errorMessage`), filtro dinámico.
+* \`\`: interfaz con `TextField` para búsqueda, `ListView.builder`, y diálogos de detalle.
+* \`\`: inicializa `MaterialApp` y arranca con `GameListView`.
 
-``: método fetchGames() que maneja JSON directo o con wrapper { games: [...] }.
-
-``: clase GameData con fromJson tolerante a nulos.
-
-``: lógica de carga, estados (isLoading, errorMessage), filtro dinámico.
-
-``: interfaz con TextField para búsqueda, ListView.builder, y diálogos de detalle.
-
-``: inicializa MaterialApp y arranca con GameListView.
