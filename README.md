@@ -1,24 +1,25 @@
-# FreeToGame Browser
+FreeToGame Browser
 
-Aplicación Flutter que consume la API pública de [FreeToGame](https://www.freetogame.com/api/) y muestra una lista de juegos con búsqueda en tiempo real.
+Aplicación Flutter que consume la API pública de FreeToGame y muestra una lista de juegos con búsqueda en tiempo real.
 
----
+Características
 
-## Características
+Obtiene la lista completa de juegos mediante petición REST GET https://www.freetogame.com/api/games
 
-* Obtiene la lista completa de juegos mediante petición REST `GET https://www.freetogame.com/api/games`
-* Modelos Dart robustos que manejan valores nulos y formatos inesperados
-* Gestión de estado con `Provider` y `ChangeNotifier`
-* Búsqueda en tiempo real mediante `TextField` y filtro dinámico
-* Indicador de carga (`CircularProgressIndicator`) mientras se obtienen datos
-* Manejo de errores y mensajes de fallo de conexión
-* Diálogo de detalles al seleccionar un juego
+Modelos Dart robustos que manejan valores nulos y formatos inesperados
 
----
+Gestión de estado con Provider y ChangeNotifier
 
-## Estructura de carpetas
+Búsqueda en tiempo real mediante TextField y filtro dinámico
 
-```
+Indicador de carga (CircularProgressIndicator) mientras se obtienen datos
+
+Manejo de errores y mensajes de fallo de conexión
+
+Diálogo de detalles al seleccionar un juego
+
+Estructura de carpetas
+
 lib/
 ├─ api_service/            # Lógica de conexión a la API
 │   └─ api_service.dart
@@ -29,15 +30,11 @@ lib/
 ├─ views/                  # Vistas (pantallas) de la app
 │   └─ game_list_view.dart
 └─ main.dart               # Punto de entrada de la aplicación
-```
 
----
+Dependencias
 
-## Dependencias
+En pubspec.yaml:
 
-En `pubspec.yaml`:
-
-```yaml
 dependencies:
   flutter:
     sdk: flutter
@@ -47,87 +44,55 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-```
 
 Ejecuta:
 
-```bash
 flutter pub get
-```
 
----
+Configuración rápida
 
-## Configuración rápida
+Clona el repositorio:
 
-1. Clona el repositorio:
+git clone <URL_DEL_PROYECTO>
+cd <PROYECTO>
 
-   ```bash
-   git clone <URL_DEL_PROYECTO>
-   cd <PROYECTO>
-   ```
+Obtén dependencias:
 
-2. Obtén dependencias:
+flutter pub get
 
-   ```bash
-   flutter pub get
-   ```
+Ejecuta en un dispositivo o emulador conectado:
 
-3. Ejecuta en un dispositivo o emulador conectado:
+flutter run
 
-   ```bash
-   flutter run
-   ```
-
----
-
-## Icono de la aplicación
+Icono de la aplicación
 
 Para definir el icono de la aplicación:
 
-1. Coloca tu imagen PNG (idealmente cuadrada, 512×512) en `assets/icon/app_icon.png`.
-2. Añade la configuración en `pubspec.yaml`:
+Coloca tu imagen PNG (idealmente cuadrada, 512×512) en assets/icon/app_icon.png.
 
-   ```yaml
-   dev_dependencies:
-     flutter_launcher_icons: ^0.14.3
+Añade la configuración en pubspec.yaml:
 
-   flutter_icons:
-     android: true
-     ios: false
-     image_path: "assets/icon/app_icon.png"
-   ```
-3. Ejecuta:
+dev_dependencies:
+  flutter_launcher_icons: ^0.14.3
 
-   ```bash
-   flutter pub get
-   dart run flutter_launcher_icons
-   ```
+flutter_icons:
+  android: true
+  ios: false
+  image_path: "assets/icon/app_icon.png"
 
----
+Ejecuta:
 
-## Estructura del código clave
+flutter pub get
+dart run flutter_launcher_icons
 
-* \`\`: método `fetchGames()` que maneja JSON directo o con wrapper `{ games: [...] }`.
-* \`\`: clase `GameData` con `fromJson` tolerante a nulos.
-* \`\`: lógica de carga, estados (`isLoading`, `errorMessage`), filtro dinámico.
-* \`\`: interfaz con `TextField` para búsqueda, `ListView.builder`, y diálogos de detalle.
-* \`\`: inicializa `MaterialApp` y arranca con `GameListView`.
+Estructura del código clave
 
----
+``: método fetchGames() que maneja JSON directo o con wrapper { games: [...] }.
 
-## Personalización
+``: clase GameData con fromJson tolerante a nulos.
 
-* **Cambiar endpoint**: modifica la constante `_baseUrl` en `api_service.dart`.
-* **Adaptar filtro**: ajusta la lógica en `GameViewModel.games` según campos adicionales.
+``: lógica de carga, estados (isLoading, errorMessage), filtro dinámico.
 
----
+``: interfaz con TextField para búsqueda, ListView.builder, y diálogos de detalle.
 
-## Contribuciones
-
-¡Bienvenidas! Siéntete libre de abrir issues o pull requests para mejoras.
-
----
-
-## Licencia
-
-MIT © \[Tu Nombre]
+``: inicializa MaterialApp y arranca con GameListView.
